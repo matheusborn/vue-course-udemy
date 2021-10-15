@@ -18,10 +18,14 @@
   <section id="events">
     <h2>Events in Action</h2>
     <button @click="add(10)">Add 5</button>
-    <button @click="add(-5)">Reduce 5</button>
+    <button @click.right="add(-5)">Reduce 5</button>
     <p>Result: {{ counter }}</p>
-    <input type="text" @input="setName($event, 'Barros')"></input>
-    <p>Your Name: {{ name }}</p>
+    <input type="text" @keyup.enter="confirmInput" @input="setName($event, 'Barros')"></input>
+    <p>Your Name: {{ confirmedName }}</p>
+    <form @submit.prevent="submitForm">
+      <input type="text">
+      <button>Sign Up</button>
+    </form>
   </section>
 </body>
 
