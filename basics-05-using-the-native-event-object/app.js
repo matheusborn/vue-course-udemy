@@ -1,8 +1,7 @@
 const app = Vue.createApp({
   data() {
     return {
-      counter: 0,
-      name: ''
+      counter: 0
     };
   },
   methods: {
@@ -15,6 +14,11 @@ const app = Vue.createApp({
     },
     resetInput() {
       this.name = ''
+    }
+  },
+  watch: {
+    counter(value) {
+      if(value > 50) this.counter = 0
     }
   },
   computed: {
