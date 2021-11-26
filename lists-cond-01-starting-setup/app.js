@@ -7,13 +7,16 @@ const app = Vue.createApp({
   },
   computed: {
     goalList() {
-      return this.goals.reverse()
+      return this.goals
     }
   },
   methods: {
     addGoal() {
       this.goals.push(this.goal)
       this.goal = ''
+    },
+    removeGoal(index) {
+      this.goals.splice(index, 1)
     }
   }
 });
