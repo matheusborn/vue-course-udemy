@@ -21,7 +21,12 @@
     <button @click="addGoal">Add Goal</button>
     <p v-if="goals.length === 0">No goals have been added yet - please start adding some!</p>
     <ul v-else>
-      <li @click="removeGoal(index)" v-for="(goal, index) in goalList"> {{ goal}} - {{index}}</li>
+      <li :key="goal" @click="removeGoal(index)" v-for="(goal, index) in goalList">
+        <p>
+          {{ goal}} - {{index}}
+        </p>
+        <input type="text" @click.stop />
+      </li>
     </ul>
     <!-- <ul>
       <li v-for="num in 10">
