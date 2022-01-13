@@ -22,7 +22,7 @@
     <input v-model="userInput" type="text">
     <button @click="addTask">Add Task</button>
     <ul v-show="showTasks">
-      <li v-cloak v-for="task in tasks">
+      <li :key="i" v-cloak v-for="(task, i) in tasks">
         {{task}}
       </li>
       <!-- 2) Output the list of tasks here -->
