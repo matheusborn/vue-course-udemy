@@ -2,7 +2,8 @@ const app = Vue.createApp({
   data() {
     return { 
       goals: [],
-      goal: ''
+      goal: '',
+      hideList: false
     };
   },
   computed: {

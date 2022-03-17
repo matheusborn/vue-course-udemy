@@ -20,7 +20,7 @@
     <input type="text" v-model="goal" />
     <button @click="addGoal">Add Goal</button>
     <p v-if="goals.length === 0">No goals have been added yet - please start adding some!</p>
-    <ul v-else>
+    <ul v-else v-show="!hideList">
       <li :key="goal" @click="removeGoal(index)" v-for="(goal, index) in goalList">
         <p>
           {{ goal}} - {{index}}
@@ -28,6 +28,7 @@
         <input type="text" @click.stop />
       </li>
     </ul>
+    <button @click="hideList = !hideList">{{hideList ? 'Show' : 'Hide'}} List</button>
     <!-- <ul>
       <li v-for="num in 10">
         {{num}}
