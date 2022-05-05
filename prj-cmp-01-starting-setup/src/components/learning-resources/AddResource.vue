@@ -1,33 +1,57 @@
 <template>
-  <base-card>
-    <form @submit.prevent="submitData">
-      <div class="form-control">
-        <label for="title">Title</label>
-        <input type="text" id="title" name="title" ref="titleInput" />
-      </div>
-      <div class="form-control">
-        <label for="title">Description</label>
-        <textarea name="description" id="description" rows="3" ref="descInput"></textarea>
-      </div>
-      <div class="form-control">
-        <label for="link">Link</label>
-        <input type="url" id="link" name="link" ref="linkInput" />
-      </div>
-      <div>
-        <base-button type="submit">Add Resource</base-button>
-      </div>
-    </form>
-  </base-card>
+  <div>
+    <base-dialog v-if="inputIsInvalid" title="Invalid Input" @close="confirmError">
+      <template #default>
+        <p>Unfortunately, at least one input value is invalid.</p>
+        <p>Please make sure yuou enter at least a few characters into each input field.</p>
+      </template>
+      <template #actions>
+        <base-button @click="confirmError">Okay</base-button>
+      </template>
+    </base-dialog>
+    <base-card>
+      <form @submit.prevent="submitData">
+        <div class="form-control">
+          <label for="title">Title</label>
+          <input type="text" id="title" name="title" ref="titleInput" />
+        </div>
+        <div class="form-control">
+          <label for="title">Description</label>
+          <textarea name="description" id="description" rows="3" ref="descInput"></textarea>
+        </div>
+        <div class="form-control">
+          <label for="link">Link</label>
+          <input type="url" id="link" name="link" ref="linkInput" />
+        </div>
+        <div>
+          <base-button type="submit">Add Resource</base-button>
+        </div>
+      </form>
+    </base-card>
+  </div>
 </template>
 
 <script>
 export default {
   inject: ['addResource'],
+  data() {
+    return {
+      inputIsInvalid: false
+    };
+  },
   methods: {
+    confirmError() {
+      this.inputIsInvalid = false;
+    },
     submitData() {
-      const enteredTitle = this.$refs.titleInput.value;
-      const enteredDesc = this.$refs.descInput.value;
-      const enteredLink = this.$refs.linkInput.value;
+      const enteredTitle = this.$refs.titleInput.value.trim();
+      const enteredDesc = this.$refs.descInput.value.trim();
+      const enteredLink = this.$refs.linkInput.value.trim();
+
+      if (enteredTitle === '' || enteredDesc === '' || enteredLink === '') {
+        this.inputIsInvalid = true;
+        return;
+      }
 
       this.addResource(enteredTitle, enteredDesc, enteredLink);
     }
