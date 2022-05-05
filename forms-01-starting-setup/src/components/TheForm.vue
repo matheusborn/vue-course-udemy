@@ -72,6 +72,9 @@
       </div>
     </div>
     <div class="form-control">
+      <rating-control v-model="formData.rating"></rating-control>
+    </div>
+    <div class="form-control">
       <input type="checkbox" id="confirm-terms" name="confirm-terms" v-model="formData.confirm" />
       <label for="confirm-terms">Agree to terms of use?</label>
     </div>
@@ -82,7 +85,12 @@
 </template>
 
 <script>
+import RatingControl from '@/components/RatingControl';
+
 export default {
+  components: {
+    RatingControl
+  },
   data() {
     return {
       formData: {
@@ -91,7 +99,8 @@ export default {
         referrer: 'wom',
         interest: [],
         how: null,
-        confirm: false
+        confirm: false,
+        rating: null
       },
       userNameValidity: 'pending'
     };
@@ -99,6 +108,15 @@ export default {
   methods: {
     submitForm() {
       console.log('Form submitted!', this.formData);
+      this.formData = {
+        userName: '',
+        age: null,
+        referrer: 'wom',
+        interest: [],
+        how: null,
+        confirm: false,
+        rating: null
+      };
     },
     validateInput() {
       if (this.formData.userName.length < 3) {
