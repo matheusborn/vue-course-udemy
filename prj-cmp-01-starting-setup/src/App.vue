@@ -1,18 +1,18 @@
 <template>
   <div>
     <the-header title="RememberMe"></the-header>
-    <the-resource></the-resource>
+    <the-resources></the-resources>
   </div>
 </template>
 
 <script>
 import TheHeader from '@/components/layouts/TheHeader';
-import TheResource from '@/components/learning-resources/TheResource';
+import TheResources from '@/components/learning-resources/TheResources';
 
 export default {
   components: {
     TheHeader,
-    TheResource
+    TheResources
   }
 };
 </script>
