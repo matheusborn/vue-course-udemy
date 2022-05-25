@@ -14,6 +14,10 @@ const router = createRouter({
       path: '/users',
       component: () => import('./components/users/UsersList.vue'),
     },
+    {
+      path: '/teams/:teamId',
+      component: () => import('./components/teams/TeamMembers.vue'),
+    }
   ],
   linkActiveClass: 'active',
 });
