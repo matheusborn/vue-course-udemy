@@ -17,7 +17,8 @@ const router = createRouter({
     {
       path: '/teams/:teamId',
       component: () => import('./components/teams/TeamMembers.vue'),
-    }
+      props: true,
+    },
   ],
   linkActiveClass: 'active',
 });
