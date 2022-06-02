@@ -8,10 +8,12 @@ const router = createRouter({
   routes: [
     // { path: '/', redirect: '/teams' },
     {
+      name: 'teams',
       path: '/teams',
       component: () => import('./components/teams/TeamsList.vue'),
       children: [
         {
+          name: 'team-members',
           path: ':teamId',
           component: () => import('./components/teams/TeamMembers.vue'),
           props: true,
