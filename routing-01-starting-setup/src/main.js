@@ -10,7 +10,10 @@ const router = createRouter({
     {
       name: 'teams',
       path: '/teams',
-      component: () => import('./components/teams/TeamsList.vue'),
+      components: {
+        default: () => import('./components/teams/TeamsList.vue'),
+        footer: () => import('./components/teams/TeamsFooter.vue'),
+      },
       children: [
         {
           name: 'team-members',
@@ -22,7 +25,10 @@ const router = createRouter({
     },
     {
       path: '/users',
-      component: () => import('./components/users/UsersList.vue'),
+      components: {
+        default: () => import('./components/users/UsersList.vue'),
+        footer: () => import('./components/users/UsersFooter.vue'),
+      },
     },
     {
       path: '/:notFound(.*)',
