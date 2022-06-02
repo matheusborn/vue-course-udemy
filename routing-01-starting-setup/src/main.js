@@ -6,9 +6,11 @@ import App from './App.vue';
 const router = createRouter({
   history: createWebHistory(),
   routes: [
+    // { path: '/', redirect: '/teams' },
     {
       path: '/teams',
       component: () => import('./components/teams/TeamsList.vue'),
+      alias: '/',
     },
     {
       path: '/users',
@@ -18,6 +20,10 @@ const router = createRouter({
       path: '/teams/:teamId',
       component: () => import('./components/teams/TeamMembers.vue'),
       props: true,
+    },
+    {
+      path: '/:notFound(.*)',
+      component: () => import('./components/nav/NotFound.vue'),
     },
   ],
   linkActiveClass: 'active',
