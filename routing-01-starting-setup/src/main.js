@@ -10,16 +10,17 @@ const router = createRouter({
     {
       path: '/teams',
       component: () => import('./components/teams/TeamsList.vue'),
-      alias: '/',
+      children: [
+        {
+          path: ':teamId',
+          component: () => import('./components/teams/TeamMembers.vue'),
+          props: true,
+        },
+      ],
     },
     {
       path: '/users',
       component: () => import('./components/users/UsersList.vue'),
-    },
-    {
-      path: '/teams/:teamId',
-      component: () => import('./components/teams/TeamMembers.vue'),
-      props: true,
     },
     {
       path: '/:notFound(.*)',
