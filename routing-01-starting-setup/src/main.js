@@ -29,6 +29,10 @@ const router = createRouter({
         default: () => import('./components/users/UsersList.vue'),
         footer: () => import('./components/users/UsersFooter.vue'),
       },
+      beforeEnter: (to, from, next) => {
+        console.log('users beforeEnter', to, from);
+        next();
+      },
     },
     {
       path: '/:notFound(.*)',

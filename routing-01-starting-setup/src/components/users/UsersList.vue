@@ -20,6 +20,11 @@ export default {
       // do something
       this.$router.push('/teams');
     }
+  },
+  beforeRouteEnter(to, from, next) {
+    // ...
+    console.log('UserList beforeRouteEnter', to, from);
+    next();
   }
 };
 </script>
