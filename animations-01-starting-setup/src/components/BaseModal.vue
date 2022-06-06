@@ -48,6 +48,7 @@ dialog {
   /* animation: modal 0.3s ease-out forwards; */
 }
 
+.modal-enter-from,
 .modal-enter-active {
   animation: modal 0.3s ease-out !important;
 }
