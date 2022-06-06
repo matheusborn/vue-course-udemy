@@ -5,12 +5,12 @@
       <button @click="animateBlock">Animate</button>
     </div>
     <div class="container">
-      <transition enter-to-class="some-class" enter-active-class="...">
+      <transition name="para">
         <p v-if="paragraphIsVisible">This is only sometimes visible...</p>
       </transition>
       <button @click="toggleParagraph">Toggle Paragraph</button>
     </div>
-    <base-modal @close="hideDialog" v-if="dialogIsVisible">
+    <base-modal @close="hideDialog" :open="dialogIsVisible">
       <p>This is a test dialog!</p>
       <button @click="hideDialog">Close it!</button>
     </base-modal>
