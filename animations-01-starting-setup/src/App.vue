@@ -40,9 +40,6 @@ export default {
 </script>
 
 <style>
-.animate {
-  transform: translateX(-150px);
-}
 * {
   box-sizing: border-box;
 }
@@ -71,7 +68,6 @@ button:active {
   height: 8rem;
   background-color: #290033;
   margin-bottom: 2rem;
-  transition: transform 0.5s ease-out;
 }
 .container {
   max-width: 40rem;
@@ -83,5 +79,19 @@ button:active {
   padding: 2rem;
   border: 2px solid #ccc;
   border-radius: 12px;
+}
+.animate {
+  animation: slide-fade 0.3s ease-out forwards;
+}
+@keyframes slide-fade {
+  0% {
+    transform: translateX(0) scale(1);
+  }
+  70% {
+    transform: translateX(-120px) scale(1.1);
+  }
+  100% {
+    transform: translateX(-150px) scale(1);
+  }
 }
 </style>
