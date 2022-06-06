@@ -5,7 +5,7 @@
       <button @click="animateBlock">Animate</button>
     </div>
     <div class="container">
-      <transition>
+      <transition enter-to-class="some-class" enter-active-class="...">
         <p v-if="paragraphIsVisible">This is only sometimes visible...</p>
       </transition>
       <button @click="toggleParagraph">Toggle Paragraph</button>
