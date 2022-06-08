@@ -1,53 +1,13 @@
 <template>
-  <div>
-    <div class="container">
-      <users-list></users-list>
-    </div>
-
-    <div class="container">
-      <div class="block" :class="{animate: animatedBlock}"></div>
-      <button @click="animateBlock">Animate</button>
-    </div>
-    <div class="container">
-      <transition
-        name="para"
-        :css="false"
-        @before-enter="beforeEnter"
-        @enter="enter"
-        @after-enter="afterEnter"
-        @before-leave="beforeLeave"
-        @leave="leave"
-        @after-leave="afterLeave"
-        @enter-cancelled="enterCancelled"
-        @leave-cancelled="leaveCancelled"
-      >
-        <p v-if="paragraphIsVisible">This is only sometimes visible...</p>
-      </transition>
-      <button @click="toggleParagraph">Toggle Paragraph</button>
-    </div>
-    <div class="container">
-      <transition name="fade-button" mode="out-in">
-        <button v-if="!usersAreVisible" @click="usersAreVisible = true">Show Users</button>
-        <button v-else @click="usersAreVisible = false">Hide Users</button>
-      </transition>
-    </div>
-    <base-modal @close="hideDialog" :open="dialogIsVisible">
-      <p>This is a test dialog!</p>
-      <button @click="hideDialog">Close it!</button>
-    </base-modal>
-    <div class="container">
-      <button @click="showDialog">Show Dialog</button>
-    </div>
-  </div>
+  <router-view v-slot="slotProps">
+    <transition name="fade-button" mode="out-in">
+      <component :is="slotProps.Component"></component>
+    </transition>
+  </router-view>
 </template>  
 
 <script>
-import UsersList from '@/components/UsersList';
-
 export default {
-  components: {
-    UsersList
-  },
   data() {
     return {
       animatedBlock: false,
@@ -185,6 +145,20 @@ button:active {
 .fade-button-enter-to,
 .fade-button-leave-from {
   opacity: 1;
+}
+
+.route-enter-from {
+  opacity: 0;
+}
+.route-enter-active {
+  animation: slide-scale 0.4 ease-out;
+}
+.route-enter-to {
+  opacity: 1;
+}
+
+.route-leave-active {
+  animation: slide-scale 0.4 ease-in;
 }
 
 @keyframes slide-scale {
