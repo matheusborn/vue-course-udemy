@@ -27,8 +27,8 @@ export default {
       }
     }
   },
+  emits: ['change-filter'],
   methods: {
-    emits: ['change-filter'],
     setFilter(event) {
       const inputId = event.target.id;
       const isActive = event.target.checked;
